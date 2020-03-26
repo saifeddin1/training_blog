@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Detail</title>
-</head>
-<body>
-{{ instance.title }}<br>
-{{ instance.content }}
-</body>
+	<head>
+		<title>Detail</title>
+	</head>
+	<body>
+		<h1>Title: {{ instance.title }}</h1>
+
+		<h4>On {{ instance.created_at }} By {{ instance.user }}</h4><br>
+		<p>Content : {{ instance.content }}
+		</p>
+	</body>
 </html>

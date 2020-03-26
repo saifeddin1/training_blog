@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Posts</title>
+</head>
+<body>
+{% for obj in query_list %}
+	<a href="{% url 'detail' obj.id %}"><h1>{{ obj.title }}</h1></a>
+	<p>
+		{{ obj.content }}
+	</p>
+{% endfor %}
+</body>
+</html>

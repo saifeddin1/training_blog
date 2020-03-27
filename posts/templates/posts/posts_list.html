@@ -5,6 +5,7 @@
 		<title>Posts</title>
 	</head>
 	<body>
+			<center>
 		<header>
 			<form method="get">
 				<input type="text" name="q">
@@ -14,7 +15,6 @@
 				<a href="{% url 'create' %}"><button type="button">Create a new post</button></a>
 			{% endif %}
 			</header><!-- /header -->
-			<div>
 				<table>
 					
 					{% for obj in page_obj %}
@@ -24,19 +24,19 @@
 								word-wrap:break-word;">{{ obj.title }}</h1></a>
 								{% if user.is_staff or user.is_superuser %}
 									
-									<a href="{% url 'update' obj.id %}" type="button">Update</a> | <a href="{% url 'delete' obj.id %}" type="button">Delete</a>
+									<a href="{% url 'update' obj.id %}" type="button">Update</a> | <a href="{% url 'delete' obj.id %}" type="button">Delete</a> | <b>On {{ obj.created_at }} By {{ obj.user }}</b><br>
+
 									
 								{% endif %}
 							</div><hr></td>
 							<td><div style="margin-left:100px;">
-								<img src="{% static 'posts/12.jpg' %}" alt="" width="100px" height="100px">
+								<img src="{% static 'posts/example.png' %}" alt="" width="150px" height="150px">
 							</div>	</td>
 						</div>
 					</tr>
 				{% endfor %}
 			</table>
-		</div>
-		<div class="pagination">
+			<div class="pagination">
 			<span class="step-links">
 				{% if page_obj.has_previous %}
 					<a href="?page=1">&laquo; first</a>
@@ -51,5 +51,6 @@
 				{% endif %}
 			</span>
 		</div>
+		</center>
 	</body>
 </html>

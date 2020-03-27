@@ -7,8 +7,12 @@
 	<body>
 		<h1>Title: {{ instance.title }}</h1>
 		<img src="{% static 'posts/example.png' %}" alt="" width="100%" height="400px">
-		<h4>On {{ instance.created_at }} By {{ instance.user }}</h4><br>
-		<p>Content : {{ instance.content }}
+		{% if instance.updated %}
+			{{ instance.updated }}
+		{% else %}
+			{{ instance.created_at }}
+		{% endif %}
+		By {{ instance.user }}</b><br>		<p>Content : {{ instance.content }}
 		</p>
 	</body>
 </html>

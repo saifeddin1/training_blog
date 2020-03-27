@@ -24,9 +24,14 @@
 								word-wrap:break-word;">{{ obj.title }}</h1></a>
 								{% if user.is_staff or user.is_superuser %}
 									
-									<a href="{% url 'update' obj.id %}" type="button">Update</a> | <a href="{% url 'delete' obj.id %}" type="button">Delete</a> | <b>On {{ obj.created_at }} By {{ obj.user }}</b><br>
+									<a href="{% url 'update' obj.id %}" type="button">Update</a> | <a href="{% url 'delete' obj.id %}" type="button">Delete</a> | <b> 
+										{% if obj.updated %}
+										    {{ obj.updated }}
+										{% else %}
+									{{ obj.created_at }} 
+										{% endif %}
 
-									
+									By {{ obj.user }}</b><br>
 								{% endif %}
 							</div><hr></td>
 							<td><div style="margin-left:100px;">

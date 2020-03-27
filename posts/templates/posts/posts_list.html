@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,18 +12,44 @@
 			</form> <br>
 			{% if user.is_staff or user.is_superuser %}
 				<a href="{% url 'create' %}"><button type="button">Create a new post</button></a>
-				{% endif %}
-				</header><!-- /header -->
-				<div>
+			{% endif %}
+			</header><!-- /header -->
+			<div>
+				<table>
 					
-					{% for obj in query_list %}
-						<a href="{% url 'detail' obj.id %}"><h1>{{ obj.title }}</h1></a>
-						{% if user.is_staff or user.is_superuser %}
-							
-							<a href="{% url 'update' obj.id %}" type="button">Update</a> | <a href="{% url 'delete' obj.id %}" type="button">Delete</a>
-							
-						{% endif %}
-					{% endfor %}
-				</div>
-			</body>
-		</html>
+					{% for obj in page_obj %}
+						<tr><div style="display:flex;flex-direction:row;">
+							<td><div style="margin-right:100px;">
+								<a href="{% url 'detail' obj.id %}" style="text-decoration:none;"><h1 style="max-width:450px;
+								word-wrap:break-word;">{{ obj.title }}</h1></a>
+								{% if user.is_staff or user.is_superuser %}
+									
+									<a href="{% url 'update' obj.id %}" type="button">Update</a> | <a href="{% url 'delete' obj.id %}" type="button">Delete</a>
+									
+								{% endif %}
+							</div><hr></td>
+							<td><div style="margin-left:100px;">
+								<img src="{% static 'posts/12.jpg' %}" alt="" width="100px" height="100px">
+							</div>	</td>
+						</div>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+		<div class="pagination">
+			<span class="step-links">
+				{% if page_obj.has_previous %}
+					<a href="?page=1">&laquo; first</a>
+					<a href="?page={{ page_obj.previous_page_number }}">previous</a>
+				{% endif %}
+				<span class="current">
+					Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+				</span>
+				{% if page_obj.has_next %}
+					<a href="?page={{ page_obj.next_page_number }}">next</a>
+					<a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+				{% endif %}
+			</span>
+		</div>
+	</body>
+</html>

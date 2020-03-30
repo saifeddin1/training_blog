@@ -26,9 +26,9 @@
 									
 									<a href="{% url 'update' obj.id %}" type="button">Update</a> | <a href="{% url 'delete' obj.id %}" type="button">Delete</a> | <b> 
 										{% if obj.updated %}
-										    {{ obj.updated }}
+										    {{ obj.updated|date:"d M Y" }}
 										{% else %}
-									{{ obj.created_at }} 
+									{{ obj.created_at|date:"d M Y" }} 
 										{% endif %}
 
 									By {{ obj.user }}</b><br>

@@ -5,6 +5,7 @@
 		<title>Detail</title>
 	</head>
 	<body>
+		<a href="{% url 'posts_list' %}"><<< back to posts</a>
 		<h1>Title: {{ instance.title }}</h1>
 		<img src="{% static 'posts/example.png' %}" alt="" width="100%" height="400px">
 		{% if instance.updated %}
@@ -14,5 +15,18 @@
 		{% endif %}
 		By {{ instance.user }}</b><br>		<p>Content : {{ instance.content }}
 		</p>
+		<!--All comments-->
+		<h1>Comments</h1>
+		{% for comment in all_comments  %}
+			By {{ comment.name }}
+			<p>{{ comment.body }}</p> <br>
+		{% endfor %}
+		<!--comment form-->
+		<h1>Leave a comment</h1>
+		<form action="{% url 'detail' instance.id %}" method="post">
+			{% csrf_token %}	
+		{{ comment_form.as_p }}
+		<input type="submit" value="Add Comment">
+		</form>
 	</body>
 </html>

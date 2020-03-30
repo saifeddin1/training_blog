@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 from .models import Post
-from .forms import PostForm
+from .forms import PostForm, CommentForm
 from django.db.models import Q
 
 
@@ -61,9 +61,23 @@ def post_create(request):
 
 def post_detail(request, post_id):
 	instance = get_object_or_404(Post, id=post_id)
-	
+	comments = instance.comment.all()
+	comment_form = CommentForm()
+	new_comment = None
+	if request.method == 'POST':
+		comment_form = CommentForm(request.POST or None)
+		if comment_form.is_valid():
+			new_comment = comment_form.save(commit=False)
+			new_comment.post = instance
+			new_comment.save()
+			return redirect('detail', post_id=instance.id)
+
+
 	context = {
 		'instance':instance,
+		'comment_form':comment_form,
+		'all_comments':comments,
+		'new_comment':new_comment,
 	}
 	return render(request, 'posts/post_detail.html', context)
 

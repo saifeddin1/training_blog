@@ -3,7 +3,7 @@ from django.http import Http404
 from django.core.paginator import Paginator
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
-from .models import Post
+from .models import Post, Comment
 from .forms import PostForm, CommentForm
 from django.db.models import Q
 
@@ -60,20 +60,24 @@ def post_create(request):
 
 
 def post_detail(request, post_id):
+	latest = Post.objects.order_by('created_at')[0:3]
+
 	instance = get_object_or_404(Post, id=post_id)
 	comments = instance.comment.all()
 	comment_form = CommentForm()
 	new_comment = None
 	if request.method == 'POST':
-		comment_form = CommentForm(request.POST or None)
+		comment_form = CommentForm(request.POST or None, request.user)
 		if comment_form.is_valid():
 			new_comment = comment_form.save(commit=False)
-			new_comment.post = instance
+			new_comment.commented_post = instance			
+			new_comment.name = request.user
 			new_comment.save()
 			return redirect('detail', post_id=instance.id)
 
 
 	context = {
+		'latest':latest,
 		'instance':instance,
 		'comment_form':comment_form,
 		'all_comments':comments,
@@ -90,7 +94,7 @@ def post_update(request, post_id):
 
 	if form.is_valid():
 		form.save()
-		return redirect('posts_list')
+		return redirect('detail', post_id=instance.id)
 
 	context = {
 		'instance':instance,
@@ -105,3 +109,14 @@ def post_delete(request, post_id):
 		raise Http404()
 	instance.delete()
 	return redirect('posts_list')
+
+
+
+def delete_comment(request, comment_id, post_id):
+	post_instance = get_object_or_404(Post, id=post_id)
+	comment_instance = get_object_or_404(Comment, id=comment_id)
+	if not request.user.is_superuser or not request.user.is_staff:
+		raise Http404()
+	comment_instance.delete()
+	return redirect('detail', post_id=post_instance.id)
+

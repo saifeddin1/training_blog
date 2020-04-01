@@ -1,61 +1,67 @@
+{% extends 'posts/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Posts</title>
-	</head>
-	<body>
+{% block title %}
+    Blog
+{% endblock title %}
+{% block extra_head %}
+	<link rel="stylesheet" type="text/css" href="{% static 'posts/list.css' %}">
+{% endblock extra_head %}
+{% block content %}
+	
+	<div class="main">
+		
+		<div class="somepadding">
 			<center>
-		<header>
-			<form method="get">
-				<input type="text" name="q">
-				<a href="{% url 'posts_list' %}"><input type="submit" value="search"></a>
-			</form> <br>
-			{% if user.is_staff or user.is_superuser %}
-				<a href="{% url 'create' %}"><button type="button">Create a new post</button></a>
-			{% endif %}
-			</header><!-- /header -->
-				<table>
-					
-					{% for obj in page_obj %}
-						<tr><div style="display:flex;flex-direction:row;">
-							<td><div style="margin-right:100px;">
-								<a href="{% url 'detail' obj.id %}" style="text-decoration:none;"><h1 style="max-width:450px;
-								word-wrap:break-word;">{{ obj.title }}</h1></a>
-								{% if user.is_staff or user.is_superuser %}
-									
-									<a href="{% url 'update' obj.id %}" type="button">Update</a> | <a href="{% url 'delete' obj.id %}" type="button">Delete</a> | <b> 
-										{% if obj.updated %}
-										    {{ obj.updated|date:"d M Y" }}
-										{% else %}
-									{{ obj.created_at|date:"d M Y" }} 
-										{% endif %}
-
-									By {{ obj.user }}</b><br>
-								{% endif %}
-							</div><hr></td>
-							<td><div style="margin-left:100px;">
-								<img src="{% static 'posts/example.png' %}" alt="" width="150px" height="150px">
-							</div>	</td>
+			<a href="{% url 'create' %}"><button type="button" class="create">Create New Post</button></a>
+			</center>
+			<div class="search">
+				<form method="get">
+					<input type="text" name="q" class="search-box">
+					<a href="{% url 'posts_list' %}"><button type="buton">Search</button></a>
+				</form> <br>
+			</div>
+			
+				{% for obj in page_obj %}
+			<div class="post">
+					<div class="post-title">
+						<a href="{% url 'detail' obj.id %}"><h1>{{ obj.title }}</h1></a>
+						<p>{{ obj.content|truncatechars:120 }}</p>
+						<a href="{% url 'detail' obj.id %}">Read More</a>
+						<p id="date">	{% if obj.updated %}
+							{{ obj.updated|date:"d M Y" }}
+						{% else %}
+							{{ obj.created_at|date:"d M Y" }}
+							<br>
+							{% endif %}<a href="#">{{ obj.user }}</a></p>
+							
 						</div>
-					</tr>
+						<div class="post-img">
+							<img src="{% static 'posts/example.png' %}">
+						</div>
+					</div>
+					<hr>
 				{% endfor %}
-			</table>
-			<div class="pagination">
-			<span class="step-links">
-				{% if page_obj.has_previous %}
-					<a href="?page=1">&laquo; first</a>
-					<a href="?page={{ page_obj.previous_page_number }}">previous</a>
-				{% endif %}
-				<span class="current">
-					Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-				</span>
-				{% if page_obj.has_next %}
-					<a href="?page={{ page_obj.next_page_number }}">next</a>
-					<a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-				{% endif %}
-			</span>
+				<br><br>
+				<div class="pagination">
+					<span class="step-links">
+						{% if page_obj.has_previous %}
+							<a href="?page=1">&laquo; <button type="">first</button></a>
+							<a href="?page={{ page_obj.previous_page_number }}"><button type="">previous</button></a>
+						{% endif %}
+						<span class="current">
+							Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+						</span>
+						{% if page_obj.has_next %}
+							<a href="?page={{ page_obj.next_page_number }}"><button type="">next</button></a>
+							<a href="?page={{ page_obj.paginator.num_pages }}"><button type="">last</button> &raquo;</a>
+						{% endif %}
+					</span>
+				</div>
+			</div>
 		</div>
-		</center>
-	</body>
-</html>
+	{% endblock content %}
+	
+{# 	{% if user.is_staff or user.is_superuser %}
+		
+		<a href="{% url 'update' obj.id %}" type="button">Update</a> | <a href="{% url 'delete' obj.id %}" type="button">Delete</a> | <b>
+	{% endif %} #}

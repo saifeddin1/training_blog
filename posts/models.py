@@ -11,6 +11,7 @@ class TimespamtedModel(models.Model):
     class Meta:
         abstract = True
 
+
 class Post(TimespamtedModel):
     user         = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
     title        = models.CharField(max_length=120)                  
@@ -29,8 +30,8 @@ class Post(TimespamtedModel):
 
 class Comment(TimespamtedModel):
     commented_post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comment')
-    name = models.CharField(max_length=50)
-    email = models.EmailField(max_length=254)
+    name = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
+    # email = models.EmailField(max_length=254)
     body  = models.TextField()
 
 

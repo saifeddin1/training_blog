@@ -1,10 +1,74 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>index</title>
-</head>
-<body>
-	<h1 style="text-align:center;">Welcome to Our Blog</h1>
-<a href="{% url 'posts_list' %}"><h2>Go to posts >> </h2></a>
-</body>
-</html>
+{% extends 'posts/base.html' %}
+{% load static %}
+{% block title %}
+    Home Page
+{% endblock title %}
+{% block extra_head %}
+{% endblock extra_head %}
+{% block content %}
+	<!-- about -->
+	<section id="about">
+		<div class="left img-div">
+			<img src="{% static 'posts/about.png' %}" width="200px" height="200px">
+		</div>
+		<div class="right">
+			<div class="text">
+				<h1 class="section-title">About Us</h1>
+				
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					re eu fugiat nulla pariatur.  ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<button class="btn">READ MORE</button>
+			</div>
+			</div>
+		</section>
+		<!-- BLOG -->
+		<section id="blog">
+			<div class="right img-div">
+				<img src="{% static 'posts/book.png' %}" width="200px" height="200px">
+			</div>
+			<div class="left">
+				<div class="text">
+					<h1>Blog</h1>
+					
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						re eu fugiat nulla pariatur.  ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<button class="btn">READ MORE</button>
+				</div>
+			</section>
+			<section id="contact">
+				<div class="left img-div">
+					<img src="{% static 'posts/join.jpg' %}" width="200px" height="200px"></div>
+					<div class="right">
+						<div class="form">
+							<form>
+								<center>							<h3>Create Your Account Now !</h3>
+</center>
+								<label>Name</label>
+								
+								<input type="text" name="">
+								<label>Email</label>
+								<input type="email" name="">
+								<label>New Password</label>
+								<input type="password" name="">
+								<center>			
+									<button type="button" class="btn">Join Us</button>
+								</center>
+							</form>
+						</div>
+					</div>
+				</section>
+			{% endblock content %}

@@ -1,32 +1,110 @@
+{% extends 'posts/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Detail</title>
-	</head>
-	<body>
-		<a href="{% url 'posts_list' %}"><<< back to posts</a>
-		<h1>Title: {{ instance.title }}</h1>
-		<img src="{% static 'posts/example.png' %}" alt="" width="100%" height="400px">
-		{% if instance.updated %}
-			{{ instance.updated }}
-		{% else %}
-			{{ instance.created_at }}
-		{% endif %}
-		By {{ instance.user }}</b><br>		<p>Content : {{ instance.content }}
-		</p>
-		<!--All comments-->
-		<h1>Comments</h1>
-		{% for comment in all_comments  %}
-			By {{ comment.name }}
-			<p>{{ comment.body }}</p> <br>
-		{% endfor %}
-		<!--comment form-->
-		<h1>Leave a comment</h1>
-		<form action="{% url 'detail' instance.id %}" method="post">
-			{% csrf_token %}	
-		{{ comment_form.as_p }}
-		<input type="submit" value="Add Comment">
-		</form>
-	</body>
-</html>
+{% load crispy_forms_tags %}
+{% block title %}
+	{{ instance.title }}
+{% endblock title %}
+{% block extra_head %}
+	<link rel="stylesheet" type="text/css" href="{% static 'posts/detail.css' %}">
+{% endblock extra_head %}
+{% block content %}
+	<div class="main">
+		
+		<div class="somepadding">
+			<h1 id="title">{{ instance.title }}</h1>
+			<div class="post-head">
+				<div class="author">
+					<img src="{% static 'posts/avatar.png' %}" id="author-img">
+					<p>
+						<a href="#"><span id="author-name">{{ instance.user }}</span></a><br>
+						<span id="date">
+							{% if instance.updated %}
+								{{ instance.updated }}
+							{% else %}
+								{{ instance.created_at }}
+							{% endif %}
+						</span></p>
+					</div>
+					{% if request.user.is_authenticated %}
+						
+					<div class="manage">
+						<a href="{% url 'update' instance.id %}"><i class="fas fa-pencil-alt"></i></a>
+						<a href="{% url 'delete' instance.id %}"><i class="fas fa-trash-alt"></i></a>
+					</div>
+					{% endif %}
+				</div>
+				<center>
+				<img src="{% static 'posts/example.png' %}" id="post-img">
+				</center>
+				<p id="post-body">{{ instance.content }}</p>
+				<hr>
+				<div class="comments">
+					
+					
+					<h2>Comments</h2>
+					{% for comment in all_comments  %}
+					<div class="comment-object">
+						
+					
+						<a href=""><i class="far fa-user-circle fa-lg"></i></a>
+						<a id="cmu" href="#">{{ comment.name }}</a> •
+						{% if comment.updated %}
+							<span class="cmd">{{ comment.updated }}</span>
+						{% else %}
+							<span class="cmd">{{ comment.created_at }}</span>
+						{% endif %}
+						{% if request.user.is_authenticated %}
+							
+							<a href="{% url 'delete_comment' instance.id comment.id %}"><i class="fas fa-trash"></i></a>
+						{% endif %}
+						<div id="cmb">
+							
+							<p>{{ comment.body }}</p> <br>
+						</div>
+						</div>
+					{% endfor %}
+					<!--comment form-->
+					<h1>Leave a comment</h1>
+					<form action="{% url 'detail' instance.id %}" method="post">
+						{% csrf_token %}
+						{% if instance.user.is_authenticated %}
+							
+							{{ comment_form | crispy }}
+						{% else %}
+							<label for="">Name</label>
+							<input type="text" name="">
+							<label for="">Email</label>
+							<input type="email" name="">
+							<label for="">Comment</label>
+							<textarea name=""></textarea>
+						{% endif %}
+						<input type="submit" value="Add Comment">
+					</form>
+				</div>
+			</div>
+			<center>
+			
+			<h1 style="font-weight:unset;">Older Post</h1>
+			</center>
+			<div class="mrg">
+				<div class="old">
+					{% for post in latest %}
+						
+						<a href="{% url 'detail' post.id %}">
+						<div class="old-post">
+							<div class="old-post-img">
+								<img src="{% static 'posts/example.png' %}">
+							</div>
+							<div class="old-post-title">
+								<h4>{{ post.title }}</h4>
+								
+								<p id="date">{{ post.creared_at }}by <a href="">{{ post.user }}</a></p>
+								
+							</div>
+						</div></a>
+						
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	{% endblock content %}

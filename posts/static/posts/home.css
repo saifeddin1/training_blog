@@ -1,0 +1,423 @@
+*{
+	
+}
+#rech{
+	float: left;
+}
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html,body{
+	height: 100%;
+	width: 100%;
+    margin: 0;
+    direction: ltr;
+    /*transition: .5s;*/
+	font-family: 'Roboto Mono', Arial;
+	font-size: 3vw:
+}
+nav {
+	padding:30px;
+	background-color:#bb92eb;
+
+}
+.mySection {
+	font-family: 'Century Gothic', Arial;
+	background-color: 	#bb92eb
+;
+	display: flex;
+	flex-direction: row;
+	padding:0 60px 30px 30px;
+	margin-top: 0px;
+	width: 100%;
+}
+.blog-head-text {
+
+    max-width: 500px;
+    width: 100%;
+    padding: 15px;
+    margin-top: 150px;
+    margin-left: 70px;
+    color: #fff;
+    text-shadow: 1px 1px #fff;
+}
+
+.blog-head-text p {
+	font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 30px;
+    font-weight: unset;
+    }
+.blog-head-text h1 {
+	font-size: 25px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 30px;
+        line-height: 100px;
+}
+img {	
+	margin-left: 300px;
+	margin-top: 20px;
+	height: 500px;
+	width: 500px;
+	max-width: 100%;		
+	border-radius: 30px;
+
+}
+.left img {
+	float: left;
+	margin-left: 30px;
+	margin-top: 20px;
+	height: 350px;
+	width: 400px;
+	max-width: 100%;		
+	border-radius: 30px;
+
+}
+.right img {
+	float: right;
+	margin-right: 30px;
+	margin-top: 20px;
+	height: 400px;
+	width: 400px;
+	max-width: 100%;		
+	border-radius: 30px;
+
+
+}
+
+.nav-links{
+	display: flex;
+	justify-content: space-between;
+	font-family: 'Century Gothic', Arial	
+}
+.nav-right{
+	margin-left: 50px;
+	margin-right: 10px;
+}
+.nav-left{
+	font-size: 3rem	;
+	font-weight: bold;
+}
+.nav-links a {
+
+	color:#fff;
+	text-decoration: none;
+}
+#nameblog{
+	width: 1240px;
+	height: 500px;
+}
+/*about*/
+.section-title{
+	/*color: #AA6F73;*/
+	font-size: 30px;
+}
+
+.text {
+	max-width: 500px;
+}
+.btn{
+	padding: 18px 40px;
+    background: transparent;
+    outline: inherit;
+    border: 2px solid #A66A8A;
+    font-weight: bold;
+    cursor: pointer;
+}
+.left{
+	width: 50%;
+	height: 0px;
+	display: flex;
+	flex-direction: row;
+}
+
+.right{
+
+	margin-left: 400px; 
+	width: 50%;
+	height: 400px;
+}
+#about {
+	background-color: #f1f1f1;
+	padding:30px; 	
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+
+}
+#blog{
+	height: 100%;
+
+	padding: 30px;
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+#searchbar{
+	
+	width:1040px; 
+	height:auto; 
+	flex-wrap: wrap;}
+.formulaire {
+	display:flex;
+	flex-direction: row;
+}
+.formulaire .champ{
+	width:300px; 
+	height:35px;
+margin-left:0px}
+.formulaire .bouton  { 
+	margin-left: 10px;
+	width: 100px;
+	height: 45px;
+	padding: 0; 
+	color:black;
+    outline: none;
+    border-radius: 12px;
+    cursor: pointer;
+	}
+h2{
+	color: white;
+	margin-top: 20px;
+}
+
+
+/*------------------Contact Us---------------*/
+
+
+}
+form{
+  max-width: 30px;
+  margin: 30px 0;
+}
+form input{
+  width: 100%;
+  padding: 12px 10px;
+  margin-bottom: 5px;
+  outline: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  border: 2px solid #fab3C4;
+}
+#emailcontact{
+  border: 0.5px solid #A66A8A;
+}
+.textarea{
+  outline: inherit;
+  border: 1px solid #A66A8A;
+
+}
+#send {
+  position: absolute;
+  margin-right: 5px;
+  width: 20px;
+  height: 5px;
+  padding-left: 23px;
+  padding-top: 16px; 
+  padding-bottom: 23px;
+  padding-right: 55px;
+    background: transparent;
+    outline: inherit;
+    border: 1px solid #A66A8A;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+
+.socialicon{
+
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
+  margin-left: 20px;
+  }
+
+.socialicon a{
+
+  margin-left:20px;
+  }
+
+.fa{
+  font-size:30px;
+  margin-left:20px;
+  }
+
+  .fa:hover{
+  padding:5px 10px 5px 10px;
+  background-color: white;
+  transition: 0.5s;
+  }
+
+#LogoFooter{
+  
+  background-color: #c5b8d4;
+}
+.social{
+  width: 35px;
+  height: 35px;
+}
+
+
+/*---------------footerr-------------*/
+
+.footer {
+  background: #bb92eb;
+  color:#303036;
+  /*height: 400px;  */
+  position: relative;
+  margin-top: 5%;
+    }
+
+.footer .footer-content{
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid #a39193;
+  height: 400px;
+  display: flex;
+  flex-direction: row;
+}
+.footer .footer-bottom{
+  color:#ffff;
+  width: 100px.
+  height: 50px;
+  text-align: center;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  padding-top: 20px;
+
+}
+.footer .footer-content .footer-section{
+  /*border: 1px solid white;*/
+}
+.footer-section{
+
+  padding:30px;
+  width:100%;
+  margin:0 0 0 0;
+  height: 380px;
+
+}
+#sumbit{
+  /*position: absolute;
+  margin-r*/ight: 5px;
+}
+
+.formulaire{
+  padding:0px;
+  margin:0px;
+  margin-top: 1cm;
+  margin-left: 3px;
+  max-width:50%;
+}
+#searchh{
+/*  margin-left: 5px;
+  margin-right: 5px;
+*/}
+#lookingfor{  
+  border: 0.5px solid #A66A8A;
+
+}
+
+#contact-footer textarea {
+  max-width: 100%;
+}
+
+
+
+@media screen and (max-width: 800px) {
+
+   .blog-head-text, img, .nav-links .main {
+  	width: 100%;
+  	max-width: 100%;
+  	margin:auto;
+    }
+  .blog-head-img img {
+  	width: 250px;
+  	height:250px;
+  }
+  .blog-head-text	 {
+  	max-width: 100%;
+  	width: 70%;
+  }
+  .nav-links #nav-menu { display: none; }
+  nav select { display: inline-block; }
+  .somepadding {
+    margin-left: 7%;
+    margin-right: 7%;
+}
+.old-post-img img{
+    float: right;
+    width: 100%;
+    height: 100%;
+  }
+  .old, .footer .footer-content{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /*justify-content: space-around;*/
+}
+
+}
+/*For ipad pro*/
+@media screen and (max-width: 1100px) {
+
+   .blog-head-text, img, .nav-links .main {
+    width: 100%;
+    max-width: 100%;
+    margin:auto;
+    }
+  .blog-head-img img {
+    width: 250px;
+    height:250px;
+  }
+  .blog-head-text  {
+    max-width: 100%;
+    width: 70%;
+  }
+  .nav-links #nav-menu { display: none; }
+  nav select { display: inline-block; }
+  .somepadding {
+    margin-left: 7%;
+    margin-right: 7%;
+}
+.old-post-img img{
+    float: right;
+    width: 100%;
+    height: 100%;
+  }
+  .old{
+  display: flex;
+  flex-direction: colum;
+  justify-content: space-around;
+}
+
+}
+/* When the screen is less than 800 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 800px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 800px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}

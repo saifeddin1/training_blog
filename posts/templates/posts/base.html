@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+		<meta name=description content="">
+		<meta name=viewport content="width=device-width, initial-scale=1.">
+		<title>{% block title %}
+			
+		{% endblock title %}</title>
+		<link href="https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap" rel="stylesheet">
+		<script src="https://kit.fontawesome.com/8a511c84f6.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" type="text/css" href="{% static 'posts/animate.css' %}">
+		{% block extra_head %}
+			
+		{% endblock extra_head %}
+		<link rel="stylesheet" type="text/css" href="{% static 'posts/base.css' %}">
+	</head>
+	<body onload="typeWriter()">
+		<nav class="navbar">
+			<div class="nav-links animated fadeInDown">
+				<a href="{% url 'posts_list' %}" class="nav-left">Blog</a>
+				
+				<div class="topnav" id="navMenu">
+					<a href="{% url 'index' %}" class="nav-right">Home</a>
+					<a href="" class="nav-right">About</a>
+					<a href="" class="nav-right">Contact Us</a>
+					<a href="" class="nav-right">Support</a>
+					<a href="javascript:void(0);" class="icon dropdown" onclick="myFunction()">
+						<i class="fa fa-bars"></i>
+					</a>
+				</div>
+				<!-- 		<select>
+					<option>Home</option>
+					<option>About</option>
+					<option>Contact</option>
+					<option>Support</option>
+				</select>
+				-->
+			</div>
+		</nav>
+		
+		<section class="mySection">
+			<div class="blog-head-text">
+				<h1>Welcome To Our Amazing BLOG</h1>
+				<p class="animated fadeInLeft">Share your ideas with the world and make difference.
+					your thoughts truly matter for us!
+				Join our community now! </p>
+				<a href="{% url 'posts_list' %}">
+				<button  type="button" class="head-btn">Access The Blog Now !</button></a>
+			</div>
+			<div class="blog-head-img">
+				<img src="{% static 'posts/head.png' %}" alt="" class="animated fadeInLeft">
+			</div>
+		</section>
+		
+		<div style="padding:20px;">
+			{% block content %}
+				
+			{% endblock content %}
+		</div>
+		
+		<footer>
+			<div class="row">
+				
+				<div class="column" id="first">
+					<div class="nav-links">
+						<a href="{% url 'posts_list' %}" class="nav-left">Blog</a>
+					</div>
+					<p >Lorem ipsum dolor sit amet consectetur.</p>
+					<div class="smth">
+						<span><i class="phone"></i> &#9743;12345678</span>
+						<span><i class="msg">&nbsp; </i> &#9993;info@exemple.com</span>
+					</div>
+					<div class="social-media">
+						<a href=""><i class="fab fa-lg fa-facebook" style="color:#0000ff;"></i></a>
+						<a href=""><i class="fab fa-lg fa-instagram" style="color:#bc2a8d;"></i></a>
+						<a href=""><i class="fab fa-lg fa-pinterest" style="color: #ff0000;"></i></a>
+					</div>
+				</div>
+				<div class="column" id="second">
+					<h2>What are you looking for?</h2>
+					<form action="" class="" id="">
+						<input  type="text" placeholder="" class="search-box" />
+						<input type="submit" value="Search">
+					</form>
+				</div>
+				<div class="column" id="last">
+					<h2>Contact Us &#9993;</h2><br>
+					<h3>Leave us a message !</h3>
+					<form id="">
+						<label for="mail" class="">Email</label>
+						
+						<input type="email" class="" id="mail" placeholder="Your Email Adress..">
+						<label for="msg" class="">Message</label>
+						<textarea placeholder="Write Your Message..." rows="10" cols="50" id="msg"></textarea><br>
+						<input type="submit" value="Send">
+					</form>
+					
+				</div>
+			</div>
+		</footer>
+		
+		<script type="text/javascript">
+			function myFunction() {
+			var x = document.getElementById("navMenu");
+			if (x.className === "topnav") {
+			x.className += " responsive";
+			} else {
+			x.className = "topnav";
+			}
+			}
+		</script>
+	</body>
+</html>

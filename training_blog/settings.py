@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'posts',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -115,3 +116,18 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #     # os.path.join(BASE_DIR, 'static'),
 #     'posts/static/',
 # )
+
+DEFAULT = {
+    'selector': 'textarea',
+    'theme': 'modern',
+    'plugins': 'link image preview codesample contextmenu table code lists',
+    'toolbar1': 'formatselect | bold italic underline | alignleft aligncenter alignright alignjustify '
+               '| bullist numlist | outdent indent | table | link image | codesample | preview code',
+    'contextmenu': 'formats | link image',
+    'menubar': False,
+    'inline': False,
+    'statusbar': True,
+    'content_css': 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css',
+    'width': 'auto',
+    'height': 360,
+}

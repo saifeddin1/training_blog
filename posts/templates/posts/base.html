@@ -10,6 +10,7 @@
 			
 		{% endblock title %}</title>
 		<link href="https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{% static 'posts/github.css' %}">
 		<script src="https://kit.fontawesome.com/8a511c84f6.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" type="text/css" href="{% static 'posts/animate.css' %}">
 		{% block extra_head %}
@@ -101,7 +102,10 @@
 				</div>
 			</div>
 		</footer>
-		
+		<!-- Prism JS -->
+<script src="{% static 'posts/highlight.pack.js' %}">
+	
+</script>
 		<script type="text/javascript">
 			function myFunction() {
 			var x = document.getElementById("navMenu");

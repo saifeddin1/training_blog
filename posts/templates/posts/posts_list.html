@@ -25,7 +25,7 @@
 			<div class="post">
 					<div class="post-title">
 						<a href="{% url 'detail' obj.id %}"><h1>{{ obj.title }}</h1></a>
-						<p>{{ obj.content|truncatechars:120 }}</p>
+						<p>{{ obj.content|truncatechars:120 | safe }}</p>
 						<a href="{% url 'detail' obj.id %}">Read More</a>
 						<p id="date">	{% if obj.updated %}
 							{{ obj.updated|date:"d M Y" }}

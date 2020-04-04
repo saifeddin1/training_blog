@@ -36,7 +36,7 @@
 				<center>
 				<img src="{% static 'posts/example.png' %}" id="post-img">
 				</center>
-				<p id="post-body">{{ instance.content }}</p>
+				<p id="post-body">{{ instance.content | safe }}</p>
 				<hr>
 				<div class="comments">
 					
@@ -107,4 +107,9 @@
 				</div>
 			</div>
 		</div>
+<script>
+myFunction()
+  alert("I am an alert box!");
+}
+</script>
 	{% endblock content %}

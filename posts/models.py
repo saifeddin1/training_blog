@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
-
+from tinymce import HTMLField
 
 
 
@@ -15,8 +15,8 @@ class TimespamtedModel(models.Model):
 class Post(TimespamtedModel):
     user         = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
     title        = models.CharField(max_length=120)                  
-    content      = models.TextField()
-  
+    # description      = models.TextField()
+    content  = HTMLField('Content')
     draft = models.BooleanField(default=False)
     # slug = models.SlugField(unique=True)
     # image = models.ImageField(upload_to=upload_location,

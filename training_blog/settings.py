@@ -28,6 +28,11 @@ INSTALLED_APPS = [
     'crispy_forms',
     'posts',
     'tinymce',
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -39,6 +44,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'training_blog.urls'
 
@@ -131,3 +137,11 @@ DEFAULT = {
     'width': 'auto',
     'height': 360,
 }
+
+AUTHENTICATION_BACKENDS = (
+   'django.contrib.auth.backends.ModelBackend',
+
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+SITE_ID = 1
